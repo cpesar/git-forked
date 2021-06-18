@@ -24,10 +24,12 @@
     "express": "^4.17.1",
     "express-handlebars": "^5.3.2",
     "express-session": "^1.17.2",
+    "fusion": "^1.0.0-beta",
     "handlebars": "^4.7.7",
     "mysql2": "^2.2.5",
     "passport": "^0.4.1",
-    "sequelize": "^6.6.2"
+    "sequelize": "^6.6.2",
+    "yelp": "^1.0.2"
   },
   "keywords": [],
   "devDependencies": {}
