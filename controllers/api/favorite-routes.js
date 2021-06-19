@@ -1,6 +1,6 @@
 
 const router = require('express').Router();
-const {favoriteModel} = require('../../models/favoriteModel');
+const {FavoriteModel} = require('../../models/FavoriteModel');
 
 //IMPORT AUTHORIZATION FILE HERE
 const hasAuth = require('../../utils/auth')
@@ -11,7 +11,7 @@ const hasAuth = require('../../utils/auth')
   //localhost:3001/api/favorite
 router.post('/', hasAuth, (req,res) => {
   try {
-    const newFavorite = favoriteModel.create({
+    const newFavorite = FavoriteModel.create({
       ...req.body, userId: req.session.userId
     })
     res.json(newFavorite)
@@ -25,7 +25,7 @@ router.post('/', hasAuth, (req,res) => {
 //localhost:3001/api/favorite/id
 router.put('/:id', hasAuth, (req,res) => {
   try {
-    const [affectedRows] = favoriteModel.update(req.body, {
+    const [affectedRows] = FavoriteModel.update(req.body, {
       where: {
         id: req.params.id,
       }
@@ -46,7 +46,7 @@ router.put('/:id', hasAuth, (req,res) => {
 //localhost:3001/api/favorite/id
 router.delete('/:id', hasAuth, (req,res) => {
   try {
-    const [affectedRows] = favoriteModel.destroy(req.body, {
+    const [affectedRows] = FavoriteModel.destroy(req.body, {
       where: {
         id: req.params.id,
       }
