@@ -1,4 +1,4 @@
-//User-Login
+//USER-LOGIN
 const router = require('express').Router();
 const {userModel} = require('../../models/userModel');
 
@@ -11,7 +11,7 @@ router.post('/homepage', (req,res) => {
       email: req.body.email,
       password: req.body.password
     })
-    //saves the session
+   //SAVES THE SESSION
     req.session.save(() =>{
       req.session.userId = newUser.id,
       req.session.email = newUser.email,
@@ -54,7 +54,7 @@ router.post('/login', (req,res) => {
 
 router.post('/logout', (req,res) => {
   if(req.session.loggedIn){
-    //if the user is logged in, destroy the session
+   //IF THE USER IS LOGGED IN, SAVE THE SESSION
     req.session.destroy(()=> {
       res.status(204).end()
     })

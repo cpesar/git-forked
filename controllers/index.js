@@ -1,4 +1,4 @@
-//navigation routes
+//NAVIGATION ROUTES
 
 
 const router = require('express').Router();
