@@ -5,7 +5,7 @@ const yelp = require('yelp-fusion');
 const apiKey = 'DHmWB-a1nSjotErXJL_b53ewWTwXBd0eFmd9jWRuK9JcNllyH-gkSF8EkhpoqxV1R40uKT_s57h4Tt10JWTbCLV4p9hP2qhhvD97OW3mL-ztuN5wSN2WVTPajKXKYHYx';
 
 const searchRequest = {
-    categories: 'sushi',
+    categories: 'pizza',
     location: 'salt lake city, ut'
 };
 

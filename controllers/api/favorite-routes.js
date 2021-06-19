@@ -8,6 +8,7 @@ const hasAuth = require('../../utils/auth')
 
 //CREATING A FAVORITE
   //NEED MODEL INFO FROM PARKER!
+  //localhost:3001/api/favorite
 router.post('/', hasAuth, (req,res) => {
   try {
     const newFavorite = favoriteModel.create({
@@ -21,6 +22,7 @@ router.post('/', hasAuth, (req,res) => {
 })
 
 //EDITING A SELECTION
+//localhost:3001/api/favorite/id
 router.put('/:id', hasAuth, (req,res) => {
   try {
     const [affectedRows] = favoriteModel.update(req.body, {
@@ -41,6 +43,7 @@ router.put('/:id', hasAuth, (req,res) => {
 
 
 //DELETE A SELECTION
+//localhost:3001/api/favorite/id
 router.delete('/:id', hasAuth, (req,res) => {
   try {
     const [affectedRows] = favoriteModel.destroy(req.body, {

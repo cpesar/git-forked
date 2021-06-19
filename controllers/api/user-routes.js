@@ -3,7 +3,7 @@ const router = require('express').Router();
 const {userModel} = require('../../models/userModel');
 
 
-
+//localhost:3001/api/user
 router.post('/homepage', (req,res) => {
   try{
     const newUser = userModel.create({
@@ -25,6 +25,9 @@ router.post('/homepage', (req,res) => {
   }
 });
 
+
+
+//localhost:3001/api/user
 router.post('/login', (req,res) => {
   try{
     const user = userModel.findOne({
@@ -52,6 +55,9 @@ router.post('/login', (req,res) => {
 })
 
 
+
+
+//localhost:3001/api/user
 router.post('/logout', (req,res) => {
   if(req.session.loggedIn){
    //IF THE USER IS LOGGED IN, SAVE THE SESSION
