@@ -45,20 +45,12 @@ userModel.init(
 },
   
 {
-    //hooks (or lifecycle events), are functions that are called before or after calls in Sequelize
     hooks: {
-      //ADD THE ASYNC FUNCTION TO THE hooks PROPERTY
-
-              //----CREATE NEW USER PASSWORD-----
-      //set up `beforeCreate` lifecycle 'hook' functionality
       async beforeCreate(newUserData){
-                                                                //salt round 10
         newUserData.password = await bcrypt.hash(newUserData.password, 10);
         return newUserData;
       },
       
-              //----UPDATE USER PASSWORD--------
-      //set up `beforeUpdate` lifecycle 'hook' functionality
       async beforeUpdate(updatedUserData){
         updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
         return updatedUserData;
@@ -66,17 +58,10 @@ userModel.init(
     },
 
     
-    //TABLE CONFIGURATION OPTIONS GO HERE (https://sequelize.org/v5/manual/models-definition.html#configuration))
-
-    //PASS IN OUR IMPORTED SEQUELIZE CONNECTION (the direct connection to our database)
     sequelize,
-    //DON'T AUTOMATICALLY CREATE createdAt/updatedAt timestamp fields
     timestamps: false,
-    //DON'T PLURALIZE NAME OF DATABASE TABLE
     freezeTableName: true,
-    //USE UNDERSCORES INSTEAD OF CAMEL-CASING
     underscored: true,
-    //MAKE IT SO OUR MODEL NAME SAYS LOWERCASE IN THE DATABASE
     modelName: 'user'
   }
 );

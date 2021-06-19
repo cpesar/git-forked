@@ -13,12 +13,14 @@ Favorite.init(
       primaryKey: true,
       autoIncrement: true
     },
-
+    
+    //DEFINE CUISINE COLUMN
     cuisine: {
       type: DataTypes.STRING,
       allowNull: false,
     },
 
+    //DEFINE PRICE COLUMN
     price: {
       type: DataTypes.DECIMAL,
       allowNull: false,
@@ -28,6 +30,7 @@ Favorite.init(
       }
     },
 
+    //DEFINE RATING COLUMN
     rating: {
       type: DataTypes.DECIMAL,
       allowNull: false,
@@ -37,6 +40,7 @@ Favorite.init(
       }
     },
 
+    //DEFINE USERID COLUMN
     userId: {
       type: DataTypes.INTEGER,
       references:{
@@ -45,14 +49,17 @@ Favorite.init(
       }
     },
 
+    //DEFINE IMAGE URL
     image_url: {
       type: DataTypes.STRING
     },
 
+    //DEFINE IMAGE
     image: {
       type: DataTypes.STRING
     },
 
+    //DEFINE NAME
     name: {
       type: DataTypes.STRING
     }
