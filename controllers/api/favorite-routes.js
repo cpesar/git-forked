@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {FavoriteModel} = require('../../models/FavoriteModel');
+const {Favorite} = require('../../models/');
 
 //IMPORT AUTHORIZATION FILE HERE
 const hasAuth = require('../../utils/auth');
@@ -7,8 +7,8 @@ const hasAuth = require('../../utils/auth');
 
 //CREATING A FAVORITE
   //localhost:3001/api/favorite
-router.post('/', (req,res) => {
-    const newFavorite = FavoriteModel.create({
+router.post('/', hasAuth, (req,res) => {
+    const newFavorite = Favorite.create({
       ...req.body, userId: req.session.userId
     })
     res.json(newFavorite)
@@ -22,9 +22,9 @@ router.post('/', (req,res) => {
 //WORK ON THIS ONCE ALL OF THE OTHER ROUTES ARE WORKING
 //EDITING A FAVORITE
 //localhost:3001/api/favorite/id
-router.put('/:id', (req,res) => {
+router.put('/:id', hasAuth, (req,res) => {
   try {
-    const [affectedRows] = FavoriteModel.update(req.body, {
+    const [affectedRows] = Favorite.update(req.body, {
       where: {
         id: req.params.id,
       }
@@ -43,9 +43,9 @@ router.put('/:id', (req,res) => {
 
 //REMOVE A FAVORITE
 //localhost:3001/api/favorite/id
-router.delete('/:id', (req,res) => {
+router.delete('/:id', hasAuth, (req,res) => {
   try {
-    const [affectedRows] = FavoriteModel.destroy(req.body, {
+    const [affectedRows] = Favorite.destroy(req.body, {
       where: {
         id: req.params.id,
       }

@@ -49,20 +49,20 @@ Favorite.init(
       }
     },
 
-    // DEFINE IMAGE URL
-    image_url: {
-      type: DataTypes.STRING
-    },
+    // // DEFINE IMAGE URL
+    // image_url: {
+    //   type: DataTypes.STRING
+    // },
 
-    // DEFINE IMAGE
-    image: {
-      type: DataTypes.STRING
-    },
+    // // DEFINE IMAGE
+    // image: {
+    //   type: DataTypes.STRING
+    // },
 
-    // DEFINE NAME
-    name: {
-      type: DataTypes.STRING
-    }
+    // // DEFINE NAME
+    // name: {
+    //   type: DataTypes.STRING
+    // }
 
   },
   {
