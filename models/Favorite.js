@@ -44,7 +44,7 @@ Favorite.init(
     userId: {
       type: DataTypes.INTEGER,
       references:{
-        model: 'UserModel',
+        model: 'User',
         key: 'id'
       }
     },

@@ -2,14 +2,14 @@
 
 //IMPORT MODELS
 const Favorite = require('./Favorite');
-const UserModel = require('./UserModel');
+const User = require('./User');
 
 
-UserModel.hasMany(Favorite, {
+User.hasMany(Favorite, {
   foreignKey: 'user_id'
 });
 
-Favorite.belongsTo(UserModel, {
+Favorite.belongsTo(User, {
   foreignKey: 'user_id',
   onDelete: 'SET NULL'
 });
@@ -18,5 +18,5 @@ Favorite.belongsTo(UserModel, {
 
 module.exports = {
   Favorite,
-  UserModel
+  User
 };

@@ -6,7 +6,7 @@ const sequelize = require ('../config/connection');
 //bcrypt HASHES PASSWORDS
 const bcrypt = require('bcrypt');
 
-class UserModel extends Model {
+class User extends Model {
   //CHECKS PASSWORD
   checkPassword(loginPw) {
     return bcrypt.compareSync(loginPw, this.password);
@@ -15,7 +15,7 @@ class UserModel extends Model {
 
 
 
-UserModel.init(
+User.init(
 {
   //1. ID COLUMN
     id: {
@@ -70,4 +70,4 @@ UserModel.init(
   }
 );
 
-module.exports = UserModel;
+module.exports = User;
