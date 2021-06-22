@@ -1,12 +1,12 @@
 const { Model, DataTypes } = require('sequelize');
-
 const sequelize = require('../config/connection');
-const UserModel = require('./UserModel');
+
+// const UserModel = require('./UserModel');
 
 class Favorite extends Model {}
 Favorite.init(
   {
-    //DEFINE COLUMNS
+    //  DEFINE ID COLUMN
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -14,33 +14,33 @@ Favorite.init(
       autoIncrement: true
     },
     
-    //DEFINE CUISINE COLUMN
+    //  DEFINE CUISINE COLUMN
     cuisine: {
       type: DataTypes.STRING,
       allowNull: false,
     },
 
-    //DEFINE PRICE COLUMN
+    //  DEFINE PRICE COLUMN
     price: {
       type: DataTypes.DECIMAL,
       allowNull: false,
-      //HOW TO VALIDATE IF THIS IS A DECIMAL
+      //VALIDATES IF IT IS A DECIMAL
       validate: {
         isDecimal: true
       }
     },
 
-    //DEFINE RATING COLUMN
+    //  DEFINE RATING COLUMN
     rating: {
       type: DataTypes.DECIMAL,
       allowNull: false,
-      //HOW TO VALIDATE IF THIS IS A DECIMAL
+      //VALIDATES IF IT IS A DECIMAL
       validate: {
         isDecimal: true
       }
     },
 
-    //DEFINE USERID COLUMN
+    // DEFINE USER-ID COLUMN
     userId: {
       type: DataTypes.INTEGER,
       references:{
@@ -49,21 +49,27 @@ Favorite.init(
       }
     },
 
-    //DEFINE IMAGE URL
+    // DEFINE IMAGE URL
     image_url: {
       type: DataTypes.STRING
     },
 
-    //DEFINE IMAGE
+    // DEFINE IMAGE
     image: {
       type: DataTypes.STRING
     },
 
-    //DEFINE NAME
+    // DEFINE NAME
     name: {
       type: DataTypes.STRING
     }
 
+  },
+  {
+    sequelize,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'favorite'
   }
 );
 

@@ -1,12 +1,15 @@
 const router = require('express').Router();
-// const { FavoriteModel } = require('../models/FavoriteModel');
-const favoriteRoutes = require('./api/favorite-routes');
+const sequelize = require('../config/connection');
+const { FavoriteModel } = require('../models');
 
 
-//GET ALL FAVORITES
-router.get('/', (req,res) => {
+// const favoriteRoutes = require('./api/favorite-routes');
 
-});
+
+// //GET ALL FAVORITES
+// router.get('/', (req,res) => {
+
+// });
 
 
 

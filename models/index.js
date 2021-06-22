@@ -6,11 +6,11 @@ const UserModel = require('./UserModel');
 
 
 UserModel.hasMany(FavoriteModel, {
-  foreignKey: 'userId'
+  foreignKey: 'user_id'
 });
 
 FavoriteModel.belongsTo(UserModel, {
-  foreignKey: 'userId',
+  foreignKey: 'user_id',
   onDelete: 'SET NULL'
 });
 

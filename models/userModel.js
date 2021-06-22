@@ -1,31 +1,35 @@
  //USER MODEL
-//IMPORT MODEL CLASS AND DataTypes FROM SEQUELIZE
+
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require ('../config/connection');
 
-//REQUIRE bcrypt FOR HASHING PASSWORDS
+//bcrypt HASHES PASSWORDS
 const bcrypt = require('bcrypt');
 
-class userModel extends Model {
+class UserModel extends Model {
+  //CHECKS PASSWORD
   checkPassword(loginPw) {
     return bcrypt.compareSync(loginPw, this.password);
   }
 }
-userModel.init(
+
+
+
+UserModel.init(
 {
-  //1. DEFINE AN ID COLUMN
+  //1. ID COLUMN
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true
     },
-  //2. DEFINE A USERNAME COLUMN
+  //2. USERNAME COLUMN
     username: {
       type: DataTypes.STRING,
       allowNull: false
     },
-  //3. DEFINE AN EMAIL COLUMN
+  //3. EMAIL COLUMN
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -34,7 +38,7 @@ userModel.init(
         isEmail: true
       }
     },
-  //4. DEFINE A PASSWORD COLUMN
+  //4. PASSWORD COLUMN
     password: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -66,4 +70,4 @@ userModel.init(
   }
 );
 
-module.exports = userModel;
+module.exports = UserModel;

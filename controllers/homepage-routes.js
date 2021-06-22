@@ -1,9 +1,11 @@
 
 const router = require('express').Router();
-// const { UserModel } = require('../models/UserModel')
+const sequelize = require('../config/connection');
+
+const { UserModel } = require('../models/UserModel');
 const homepageRoutes = require('./api/user-routes');
 
-router.use()
+// router.use()
 
 
 router.get('/login', (req,res)=> {
@@ -11,8 +13,7 @@ router.get('/login', (req,res)=> {
     res.redirect('/dishboard');
     return;
   }
-
-  res.render('/')
+  res.render('login')
 });
 
 
