@@ -2,7 +2,7 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 
-const { UserModel } = require('../models/UserModel');
+const { User } = require('../models');
 const homepageRoutes = require('./api/user-routes');
 
 // router.use()

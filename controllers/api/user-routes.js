@@ -1,11 +1,11 @@
 //USER-LOGIN
 const router = require('express').Router();
-const {UserModel} = require('../../models/UserModel');
+const {User} = require('../../models');
 
 
 //CREATE A NEW USER ROUTE
 router.post('/homepage', (req,res) => {
-  UserModel.create({
+  User.create({
     username: req.body.username,
     email: req.body.email,
     password: req.body.password
@@ -52,7 +52,7 @@ router.post('/homepage', (req,res) => {
 
 //USER LOGIN ROUTE
 router.post('/login', (req,res) =>{
-  UserModel.findOne({
+  User.findOne({
     where:{
       username: req.body.username
     }

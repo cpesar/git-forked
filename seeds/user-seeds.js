@@ -6,7 +6,7 @@ const userSeed = [
   {
     username: 'charlie',
     email: 'charlie!@gmail.com',
-    password: 'thisprojectsucks'
+    password: 'thisprojectisfunny'
 
   },
 
