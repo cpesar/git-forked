@@ -2,6 +2,9 @@ const yelp = require("yelp-fusion");
 const express = require("express");
 const session = require("express-session");
 const exphbs = require("express-handlebars");
+
+const routes = require('./controllers');
+
 // const passport = require("passport");
 // const localStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcrypt");
@@ -34,10 +37,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(require("./controllers/"));
 
+app.use(routes);
 
-sequelize.sync({ force: true }).then(() => {
-  app.listen(PORT, () => console.log("Now listening"));
-});
+// sequelize.sync({ force: false }).then(() => {
+//   app.listen(PORT, () => console.log("Now listening"));
+// });
+
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => {console.log(`App listening on port ${PORT}!`);
+  });
+})
 
 
 

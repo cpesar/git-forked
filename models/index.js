@@ -11,7 +11,7 @@ User.hasMany(Favorite, {
 
 Favorite.belongsTo(User, {
   foreignKey: 'user_id',
-  onDelete: 'SET NULL'
+  // onDelete: 'SET NULL'
 });
 
 

@@ -1,4 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
+
 const sequelize = require('../config/connection');
 
 // const UserModel = require('./UserModel');
@@ -43,8 +44,9 @@ Favorite.init(
     // DEFINE USER-ID COLUMN
     userId: {
       type: DataTypes.INTEGER,
+      //references the user model's id
       references:{
-        model: 'User',
+        model: 'user',
         key: 'id'
       }
     },
@@ -69,7 +71,7 @@ Favorite.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'favorite'
+    modelName: 'favorite',
   }
 );
 

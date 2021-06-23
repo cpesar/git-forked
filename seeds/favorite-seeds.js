@@ -5,7 +5,7 @@ const favoriteSeed = [
     cuisine:'italian',
     price: 12,
     rating: 3.5,
-    user_id: 3,
+    user_id: 1,
 
   },
 
@@ -13,7 +13,7 @@ const favoriteSeed = [
     cuisine:'pho',
     price: 20,
     rating: 10,
-    user_id: 5,
+    user_id: 2,
 
   },
   
