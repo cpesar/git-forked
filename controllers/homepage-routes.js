@@ -1,3 +1,5 @@
+//FRONT END ROUTES- NEED TO COLLAB WITH JIM FOR HANDLEBARS
+
 
 const router = require('express').Router();
 const sequelize = require('../config/connection');
@@ -13,7 +15,7 @@ router.get('/login', (req,res)=> {
     res.redirect('/dishboard');
     return;
   }
-  res.render('login')
+  res.render('homepage')
 });
 
 

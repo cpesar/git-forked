@@ -4,6 +4,8 @@ const {User} = require('../../models');
 
 
 //CREATE A NEW USER ROUTE
+//localhost:3001/api/user/
+//SHOULD THIS BE ('/user')????
 router.post('/homepage', (req,res) => {
   User.create({
     username: req.body.username,
@@ -27,30 +29,8 @@ router.post('/homepage', (req,res) => {
 });
 
 
-//localhost:3001/api/user
-// router.post('/homepage', (req,res) => {
-  
-//     const newUser = UserModel.create({
-//       username: req.body.username,
-//       email: req.body.email,
-//       password: req.body.password
-//     })
-//    //SAVES THE SESSION
-//     req.session.save(() =>{
-//       req.session.userId = newUser.id,
-//       req.session.email = newUser.email,
-//       req.session.password = newUser.password
-//     req.session.loggedIn = true,
-//     res.json(newUser)
-//     })
-
-//   .catch(err => {
-//     console.log(err);
-//     res.status(500).json(err);
-//   });
-// });
-
 //USER LOGIN ROUTE
+//localhost:3001/api/user/
 router.post('/login', (req,res) =>{
   User.findOne({
     where:{
@@ -77,36 +57,9 @@ router.post('/login', (req,res) =>{
   })
 })
 
-//localhost:3001/api/user
-// router.post('/login', (req,res) => {
-  
-//     const user = UserModel.findOne({
-//       where:{
-//         username: req.body.username,
-//       }
-//     })
-//     const userPassword = user.checkPassword(req.body.password)
-
-//     if(!userPassword){
-//       res.status(400).json(err) 
-//       return;
-//     }
-//     req.session.save(() =>{
-//       req.session.userId = user.id,
-//       req.session.email = user.email,
-//       req.session.password = user.password
-//     req.session.loggedIn = true,
-//     res.json({user, message: 'User is now logged in!'})
-//     })
-  
-//     .catch(err => {
-//       res.status(400).json({message: 'User not found'})
-//     });
-// })
 
 
-
-
+//USER LOGOUT ROUTE
 //localhost:3001/api/user
 router.post('/logout', (req,res) => {
   if(req.session.loggedIn){
