@@ -1,54 +1,57 @@
-
 const router = require('express').Router();
-const {favoriteModel} = require('../../models/favoriteModel');
+const {Favorite} = require('../../models/');
 
 //IMPORT AUTHORIZATION FILE HERE
-const hasAuth = require('../../utils/auth')
+const { isLoggedIn, isLoggedOut } = require("../../utils/auth");
 
 
-//creating a favorite(need model info!)
-router.post('/', hasAuth, (req,res) => {
-
-    const newFavorite = favoriteModel.create({
-      ...req.body, userId: req.session.userId
+// CREATING A FAVORITE
+// http://localhost:3001/api/favorite
+router.post('/', isLoggedIn, (req,res) => {
+    const newFavorite = Favorite.create({
+      ...req.body, user_id: req.session.userId
     })
-
-  .catch(err){
+    res.json(newFavorite)
+  
+  .catch(err => {
     res.status(500).json(err)
-  }
+  });
 })
 
-//editing a selection
-router.put('/:id', hasAuth, (req,res) => {
 
-    const [affectedRows] = favoriteModel.update(req.body, {
+//WORK ON THIS ONCE ALL OF THE OTHER ROUTES ARE WORKING
+//EDITING A FAVORITE
+// http://localhost:3001/api/favorite/id
+router.put('/:id', (req,res) => {
+  try {
+    const [affectedRows] = Favorite.update(req.body, {
       where: {
         id: req.params.id,
       }
     })
     if(affectedRows > 0){
       res.status(200).end();
-    }else{
+    } else {
       res.status(404).end();
-    }
-
-  .catch(err){
-    res.status(500).json(err)
   }
+}
+  catch(err) {
+    res.status(500).json(err)
+  };
 })
 
 
-
-//delete a selection
-router.delete('/:id', hasAuth, (req,res) => {
-
-    const [affectedRows] = favoriteModel.destroy(req.body, {
+//REMOVE A FAVORITE
+//http://localhost:3001/api/favorite/id
+router.delete('/:id', isLoggedIn, (req,res) => {
+  try {
+    const [affectedRows] = Favorite.destroy(req.body, {
       where: {
         id: req.params.id,
       }
     })
-
-  .catch(err){
+  }
+  catch(err){
     res.status(500).json(err)
   }
 })

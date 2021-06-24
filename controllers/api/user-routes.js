@@ -1,67 +1,121 @@
-//User-Login
+//USER-LOGIN
 const router = require('express').Router();
-const {userModel} = require('../../models/userModel');
+const {User} = require('../../models');
 
 
 
-router.post('/homepage', (req,res) => {
-  try{
-    const newUser = userModel.create({
-      username: req.body.username,
-      email: req.body.email,
-      password: req.body.password
-    })
-    //saves the session
-    req.session.save(() =>{
-      req.session.userId = newUser.id,
+//CREATE A NEW USER ROUTE
+//http://localhost:3001/api/users
+router.post('/', (req,res) => {
+  // res.json({ message: 'Does this work? '});
+  User.create({
+    username: req.body.username,
+    email: req.body.email,
+    password: req.body.password
+  })
+  .then(newUser => {
+    req.session.save(() => {
+      req.session.user_id = newUser.id,
       req.session.email = newUser.email,
       req.session.password = newUser.password
-    req.session.loggedIn = true,
-    res.json(newUser)
-    })
-  }
-  catch(err){
-    res.status(500).json(err)
-  }
+      req.session.loggedIn = true;
+
+      res.json(newUser);
+    });
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
 });
 
-router.post('/login', (req,res) => {
-  try{
-    const user = userModel.findOne({
-      where:{
-        username: req.body.username,
-      }
-    })
-    const userPassword = user.checkPassword(req.body.password)
 
-    if(!userPassword){
-      res.status(400).json(err) 
+
+//  GET ALL USERS
+//  http://localhost:3001/api/users
+router.get('/',(req,res) => {
+  User.findAll({
+    attributes: { exclude: ['password']}
+  })
+    .then(userData => res.json(userData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+
+
+
+// GET USER BY ID
+// http://localhost:3001/api/users/<id>
+router.get('/:id', (req,res) => {
+  User.findOne({
+    attributes: { exclude: ['password']},
+    where: {
+      id: req.params.id
+    },
+       // CAN WE ADD SOME QUERY TO SEARCH FOR THE USER BY--- FAVORITES?
+  })
+  .then(userData => {
+    if (!userData){
+      res.status(404).json({ message: 'Wrong forker'});
       return;
     }
-    req.session.save(() =>{
-      req.session.userId = user.id,
-      req.session.email = user.email,
-      req.session.password = user.password
-    req.session.loggedIn = true,
-    res.json({user, message: 'User is now logged in!'})
-    })
-  }
-    catch(err){
-      res.status(400).json({message: 'User not found'})
+    res.json(userData);
+  
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
+});
+
+
+
+
+//USER LOGIN ROUTE
+//localhost:3001/api/user/
+router.post('/login', (req,res) =>{
+  User.findOne({
+    where:{
+      username: req.body.username
     }
+  }).then(newUser => {
+    if(!newUser){
+      res.status(400).json({message: 'Forker not found'});
+      return;
+    }
+    const userPassword = newUser.checkPassword(req.body.password);
+    if(!userPassword){
+      res.status(400).json({ message: 'Invalid password'});
+      return;
+    }
+    req.session.save(() => {
+      req.session.user_id = newUser.id;
+      req.session.email = newUser.email;
+      req.session.password = newUser.password;
+      req.session.loggedIn = true;
+
+      res.json({user, message: 'Great Success!'})
+    });
+  })
 })
 
 
+
+//USER LOGOUT ROUTE
+//localhost:3001/api/user
 router.post('/logout', (req,res) => {
   if(req.session.loggedIn){
-    //if the user is logged in, destroy the session
+   //IF THE USER IS LOGGED IN, SAVE THE SESSION
     req.session.destroy(()=> {
       res.status(204).end()
     })
-  }else{
+  }
+  else{
     res.status(404).end()
   }
-})
-
+});
 
 module.exports = router;
