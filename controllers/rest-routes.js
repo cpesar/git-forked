@@ -5,7 +5,7 @@ const sequelize = require('../config/connection');
 
 router.get('/', (req,res) => {
   // if(req.session.loggedIn){
-    res.render('restaurant', { title: 'Restaurant' })
+    res.render('restaurant', { title: 'Restaurants' })
   // } 
 })
 
