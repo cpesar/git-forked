@@ -26,7 +26,7 @@ router.get('/', hasAuth, (req,res) => {
     //talk to jim for handlebars for the class used in handlebars
     //reference for handlebars 
     //HANDLEBARS FILENAME GOES IN THE QUOTES
-    res.render('favorite', {favorites, isLoggedIn: true})
+    res.render('favorite', { title: 'Favorites' }, {favorites, isLoggedIn: true})
   })
   .catch(err => {
     console.log(err);

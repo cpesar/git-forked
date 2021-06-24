@@ -13,7 +13,7 @@ router.get('/login', (req,res)=> {
     res.redirect('/dishboard');
     return;
   }
-  res.render('login')
+  res.render('homepage', { title: 'Homepage' })
 });
 
 
