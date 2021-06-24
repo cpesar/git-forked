@@ -15,8 +15,8 @@ router.get('/login', (req,res)=> {
     res.redirect('/dishboard');
     return;
   }
-  //REFERENCES HANDLEBARS
-  res.render('homepage')
+
+  res.render('homepage', { title: 'Homepage' })
 });
 
 

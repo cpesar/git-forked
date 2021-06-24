@@ -2,6 +2,7 @@
 const express = require("express");
 const session = require("express-session");
 const exphbs = require("express-handlebars");
+const hbs = exphbs.create({});
 
 const routes = require('./controllers');
 
@@ -30,18 +31,15 @@ app.use(session(sess));
 
 
 // Middleware
-app.engine("handlebars", exphbs());
+app.engine("handlebars", exphbs({ defaultLayout: 'main' }));
 app.set("view engine", "handlebars");
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static('./views/images'));
 app.use(require("./controllers/"));
 
 app.use(routes);
-
-// sequelize.sync({ force: false }).then(() => {
-//   app.listen(PORT, () => console.log("Now listening"));
-// });
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => {console.log(`App listening on port ${PORT}!`);
