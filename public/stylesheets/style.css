@@ -19,3 +19,11 @@
 input {
   margin-bottom: 1%;
 }
+
+#params {
+  margin-top: 1%;
+}
+
+.col-3 {
+  text-align: center;
+}
