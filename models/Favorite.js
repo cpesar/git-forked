@@ -7,7 +7,7 @@ const sequelize = require('../config/connection');
 class Favorite extends Model {}
 Favorite.init(
   {
-    //  DEFINE ID COLUMN
+    //1. ID COLUMN
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -15,13 +15,13 @@ Favorite.init(
       autoIncrement: true
     },
     
-    //  DEFINE CUISINE COLUMN
+    //2. CUISINE COLUMN
     cuisine: {
       type: DataTypes.STRING,
       allowNull: false,
     },
 
-    //  DEFINE PRICE COLUMN
+    //3. PRICE COLUMN
     price: {
       type: DataTypes.DECIMAL,
       allowNull: false,
@@ -31,7 +31,7 @@ Favorite.init(
       }
     },
 
-    //  DEFINE RATING COLUMN
+    //4. RATING COLUMN
     rating: {
       type: DataTypes.DECIMAL,
       allowNull: false,
@@ -41,7 +41,7 @@ Favorite.init(
       }
     },
 
-    // DEFINE USER-ID COLUMN
+    //5. USER-ID COLUMN
     userId: {
       type: DataTypes.INTEGER,
       //references the user model's id
