@@ -10,13 +10,13 @@ const homepageRoutes = require('./api/user-routes');
 // router.use()
 
 
-router.get('/login', (req,res)=> {
+router.get('/', (req,res)=> {
   if(req.session.loggedIn){
     res.redirect('/dishboard');
     return;
   }
 
-  res.render('homepage', { title: 'Homepage' })
+  res.render('homepage', { title: 'Homepage' });
 });
 
 

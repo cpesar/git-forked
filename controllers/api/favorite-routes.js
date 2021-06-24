@@ -41,26 +41,26 @@ router.post('/', hasAuth, (req,res) => {
 });
 
 
-//WORK ON THIS ONCE ALL OF THE OTHER ROUTES ARE WORKING
-//EDITING A FAVORITE
-// http://localhost:3001/api/favorites/id
-router.put('/:id', hasAuth, (req,res) => {
-  try {
-    const [affectedRows] = Favorite.update(req.body, {
-      where: {
-        id: req.params.id,
-      }
-    })
-    if(affectedRows > 0){
-      res.status(200).end();
-    } else {
-      res.status(404).end();
-  }
-}
-  catch(err) {
-    res.status(500).json(err)
-  };
-})
+// //WORK ON THIS ONCE ALL OF THE OTHER ROUTES ARE WORKING
+// //EDITING A FAVORITE
+// // http://localhost:3001/api/favorites/id
+// router.put('/:id', hasAuth, (req,res) => {
+//   try {
+//     const [affectedRows] = Favorite.update(req.body, {
+//       where: {
+//         id: req.params.id,
+//       }
+//     })
+//     if(affectedRows > 0){
+//       res.status(200).end();
+//     } else {
+//       res.status(404).end();
+//   }
+// }
+//   catch(err) {
+//     res.status(500).json(err)
+//   };
+// })
 
 
 //REMOVE A FAVORITE
