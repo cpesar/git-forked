@@ -27,3 +27,8 @@ input {
 .col-3 {
   text-align: center;
 }
+
+.search-btn {
+  width: auto;
+  margin: auto;
+}
