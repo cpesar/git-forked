@@ -4,18 +4,25 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Git Forked</title>
+  <title> {{ title }} </title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
-  <input class="user" type="text" placeholder="Username">
-  <br>
-  <input class="password" type="password" placeholder="Password">
-  <br>
-  <button class="login-btn">Dishboard</button>
 
-  <p>
-    First time getting forked? Let's get you signed up to be a full-time forker!
-  </p>
-  <button class="signup-btn">Fork Yea!</button>
+  <div class="wrapper">
+    <header class="container-fluid">
+      <h1 id="page-title">
+        {{ title }}
+      </h1>
+    </header>
+    <main>
+      {{{ body }}}
+    </main>
+    <footer>
+    </footer>
+  </div>
+
 </body>
+
 </html>

@@ -1,0 +1,21 @@
+.container-fluid {
+  background-image: url('../images/forked.jpg');
+  height: 350px;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: 65%;
+}
+
+#page-title {
+  text-align: center;
+  padding: 150px 0;
+}
+
+#login {
+  margin-left: 2%;
+}
+
+input {
+  margin-bottom: 1%;
+}
