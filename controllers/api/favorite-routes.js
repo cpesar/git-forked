@@ -5,23 +5,45 @@ const {Favorite} = require('../../models/');
 const hasAuth = require('../../utils/auth');
 
 
-// CREATING A FAVORITE
-// http://localhost:3001/api/favorite
-router.post('/', hasAuth, (req,res) => {
-    const newFavorite = Favorite.create({
-      ...req.body, user_id: req.session.userId
-    })
-    res.json(newFavorite)
-  
+// FIND ALL FAVORITES
+//http://localhost:3001/favorites
+router.get('/', hasAuth, (req,res) => {
+  console.log('==============');
+  Favorite.findAll()
+  .then(newFavorite => res.json(newFavorite))
   .catch(err => {
-    res.status(500).json(err)
+    console.log(err);
+    res.status(400).json(err);
   });
-})
+});
+
+
+
+// CREATING A FAVORITE
+// http://localhost:3001/api/favorites
+router.post('/', hasAuth, (req,res) => {
+  Favorite.create({
+    user_id: req.session.user_id
+  })
+  .then(newFavorite => res.json(newFavorite))
+  .catch(err => {
+    console.log(err);
+    res.status(400).json(err);
+  });
+  //   const newFavorite = Favorite.create({
+  //     ...req.body, user_id: req.session.userId
+  //   })
+  //   res.json(newFavorite)
+  
+  // .catch(err => {
+  //   res.status(500).json(err)
+  // });
+});
 
 
 //WORK ON THIS ONCE ALL OF THE OTHER ROUTES ARE WORKING
 //EDITING A FAVORITE
-// http://localhost:3001/api/favorite/id
+// http://localhost:3001/api/favorites/id
 router.put('/:id', hasAuth, (req,res) => {
   try {
     const [affectedRows] = Favorite.update(req.body, {
@@ -42,24 +64,44 @@ router.put('/:id', hasAuth, (req,res) => {
 
 
 //REMOVE A FAVORITE
-//http://localhost:3001/api/favorite/id
+//http://localhost:3001/api/favorites/<id>
 router.delete('/:id', hasAuth, (req,res) => {
-  try {
-    const [affectedRows] = Favorite.destroy(req.body, {
-      where: {
-        id: req.params.id,
-      }
-    })
-    if(affectedRows > 0){
-      res.status(200).end();
-    }else{
-      res.status(404).end();
+  Favorite.destroy({
+    where: {
+      id: req.params.id
     }
-  }
-  catch(err){
-    res.status(500).json(err)
-  }
-})
+  })
+  .then(dbFavoriteData => {
+    if(!dbFavoriteData){
+      res.status(404).json({ message: 'No favorites found' });
+      return;
+    }
+    res.json(dbFavoriteData);
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
+  // try {
+//   const [affectedRows] = Favorite.destroy(req.body, {
+//     where: {
+//       id: req.params.id,
+//     }
+//   })
+//   if(affectedRows > 0){
+//     res.status(200).end();
+//   }else{
+//     res.status(404).end();
+//   }
+// }
+// catch(err){
+//   res.status(500).json(err)
+// }
+});
 
 
 module.exports = router;
+
+
+
+

@@ -10,18 +10,23 @@ const hasAuth = require('../utils/auth');
 // const favoriteRoutes = require('./api/favorite-routes');
 
 
-// //GET ALL FAVORITES
+// GET ALL FAVORITES
 router.get('/', hasAuth, (req,res) => {
   Favorite.findAll({
     where: {
       user_id: req.session.user_id,
 
     },
-    attributes:[
-      'id', 'cuisine', 'price', 'rating', 'created_at'
+    attributes:
+    [
+      'id', 
+      'cuisine', 
+      'price', 
+      'rating', 
+      'created_at'
     ],
     include: [
-      {model: UserModel, attributes: ['username', 'email', 'password']}
+      {model: User, attributes: ['username', 'email', 'password']}
     ]
   }).then(favoriteData => {
     const favorites = favoriteData.map(favorite=> favorite.get({plain: true}))
@@ -36,6 +41,7 @@ router.get('/', hasAuth, (req,res) => {
   });
 });
 
-//
+// DELETE A FAVORITE
+
 
 module.exports = router;
