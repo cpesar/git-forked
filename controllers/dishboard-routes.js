@@ -36,8 +36,6 @@ router.get('/', hasAuth, (req,res) => {
   });
 });
 
-
-//put route
 //
 
 module.exports = router;

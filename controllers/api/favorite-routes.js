@@ -5,11 +5,11 @@ const {Favorite} = require('../../models/');
 const hasAuth = require('../../utils/auth');
 
 
-//CREATING A FAVORITE
-  //localhost:3001/api/favorite
+// CREATING A FAVORITE
+// http://localhost:3001/api/favorite
 router.post('/', hasAuth, (req,res) => {
     const newFavorite = Favorite.create({
-      ...req.body, userId: req.session.userId
+      ...req.body, user_id: req.session.userId
     })
     res.json(newFavorite)
   
@@ -21,7 +21,7 @@ router.post('/', hasAuth, (req,res) => {
 
 //WORK ON THIS ONCE ALL OF THE OTHER ROUTES ARE WORKING
 //EDITING A FAVORITE
-//localhost:3001/api/favorite/id
+// http://localhost:3001/api/favorite/id
 router.put('/:id', hasAuth, (req,res) => {
   try {
     const [affectedRows] = Favorite.update(req.body, {
@@ -42,7 +42,7 @@ router.put('/:id', hasAuth, (req,res) => {
 
 
 //REMOVE A FAVORITE
-//localhost:3001/api/favorite/id
+//http://localhost:3001/api/favorite/id
 router.delete('/:id', hasAuth, (req,res) => {
   try {
     const [affectedRows] = Favorite.destroy(req.body, {
