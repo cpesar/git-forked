@@ -5,72 +5,42 @@ const exphbs = require("express-handlebars");
 const passport = require("passport");
 const localStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcrypt");
+const path = require("path");
 
-const app = express();
-const PORT = process.env.PORT || 3001;
+// const app = express();
+// const PORT = process.env.PORT || 3001;
 
-const sequelize = require("./config/connection");
-const SequelizeStore = require("connect-session-sequelize")(session.Store);
+// const sequelize = require("./config/connection");
+// const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
-const sess = {
-  secret: process.env.DB_SECRET,
-  cookie: {},
-  resave: false,
-  saveUninitialized: true,
-  store: new SequelizeStore({
-    db: sequelize,
-  }),
-  cookie: {
-    maxAge: 300000,
-  },
-};
+// const sess = {
+//   secret: process.env.DB_SECRET,
+//   cookie: {},
+//   resave: false,
+//   saveUninitialized: true,
+//   store: new SequelizeStore({
+//     db: sequelize,
+//   }),
+//   cookie: {
+//     maxAge: 300000,
+//   },
+// };
 
-app.use(session(sess));
+// app.use(session(sess));
 
-// Middleware
-app.engine("handlebars", hbs.engine);
-app.set("view engine", "handlebars");
+// // Middleware
+// app.engine("handlebars", exphbs());
+// app.set("view engine", "handlebars");
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, "public")));
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: false }));
+// app.use(express.static(path.join(__dirname, "public")));
 
-app.use(require("./controllers/"));
+// app.use(require("./controllers/"));
 
-// Passport
-app.use(passport.initialize());
-app.use(passport.session());
-
-passport.serializeUser(function (user, done) {
-  done(null, user.id);
-});
-
-passport.deserializeUser(function (id, done) {
-  User.findById(id, function (err, user) {
-    done(err, user);
-  });
-});
-
-passport.use(
-  new localStrategy(function (username, password, done) {
-    User.findOne({ username: username }, function (err, user) {
-      if (err) return done(err);
-      if (!user) return done(null, false, { message: "Incorrect username." });
-
-      bcrypt.compare(password, user.password, function (err, res) {
-        if (err) return done(err);
-        if (res === false)
-          return done(null, false, { message: "Incorrect password." });
-
-        return done(null, user);
-      });
-    });
-  })
-);
-
-sequelize.synce({ force: false }).then(() => {
-  app.listen(PORT, () => console.log("Not listening"));
-});
+// sequelize.sync({ force: false }).then(() => {
+//   app.listen(PORT, () => console.log("Now listening"));
+// });
 
 // Place holder for Yelp Fusion's API Key. Grab them
 // from https://www.yelp.com/developers/v3/manage_app

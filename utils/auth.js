@@ -1,3 +1,12 @@
 //says user is logged in
-//if the user doesn't have userid redirect to login page
-  // next()
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) return next();
+  res.redirect("/dishboard");
+}
+
+function isLoggedOut(req, res, next) {
+  if (!req.isAuthenticated()) return next();
+  res.redirect("/");
+}
+
+module.exports = { isLoggedIn, isLoggedOut };
