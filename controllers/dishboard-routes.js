@@ -7,7 +7,7 @@ const { Favorite, User } = require('../models');
 const hasAuth = require('../utils/auth');
 
 
-// const favoriteRoutes = require('./api/favorite-routes');
+const favoriteRoutes = require('./api/favorite-routes');
 
 
 // GET ALL FAVORITES
@@ -26,12 +26,10 @@ router.get('/', hasAuth, (req,res) => {
       'created_at'
     ],
     include: [
-      {model: User, attributes: ['username', 'email', 'password']}
+      {model: User, attributes: ['username', 'password']}
     ]
   }).then(favoriteData => {
     const favorites = favoriteData.map(favorite=> favorite.get({plain: true}))
-    //talk to jim for handlebars for the class used in handlebars
-    //reference for handlebars 
     //HANDLEBARS FILENAME GOES IN THE QUOTES
     res.render('favorite', { title: 'Favorites' }, {favorites, isLoggedIn: true})
   })
@@ -40,8 +38,6 @@ router.get('/', hasAuth, (req,res) => {
     res.status(500).json(err);
   });
 });
-
-// DELETE A FAVORITE
 
 
 module.exports = router;

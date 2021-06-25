@@ -30,14 +30,14 @@ User.init(
       allowNull: false
     },
   //3. EMAIL COLUMN
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        isEmail: true
-      }
-    },
+    // email: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    //   unique: true,
+    //   validate: {
+    //     isEmail: true
+    //   }
+    // },
   //4. PASSWORD COLUMN
     password: {
       type: DataTypes.STRING,
