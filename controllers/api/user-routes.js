@@ -1,6 +1,8 @@
 //USER-LOGIN
 const router = require("express").Router();
 const { User } = require("../../models");
+const passport = require("passport");
+
 
 //CREATE A NEW USER ROUTE
 //http://localhost:3001/api/users
@@ -63,6 +65,22 @@ router.get("/:id", (req, res) => {
 
 //USER LOGIN ROUTE
 //localhost:3001/api/user/
+
+// router.post(
+//   "/login",
+//   passport.authenticate(
+//     "local",
+//     {
+//       successRedirect: "/restaurants",
+//       failureRedirect: "/login",
+//       failureFlash: true,
+//     },
+//     (req, res) => {
+//       res.send(200);
+//     }
+//   )
+// );
+
 router.post("/login", (req, res) => {
   User.findOne({
     where: {
@@ -90,6 +108,19 @@ router.post("/login", (req, res) => {
         console.log(err);
         res.status(500).json(err);
       });
+    if (newUser) {
+      passport.authenticate(
+        "local",
+        {
+          successRedirect: "/restaurants",
+          failureRedirect: "/login",
+          failureFlash: true,
+        },
+        (req, res) => {
+          res.send(200);
+        }
+      );
+    }
   });
 });
 

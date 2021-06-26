@@ -4,17 +4,17 @@ const router = require("express").Router();
 const sequelize = require("../config/connection");
 const { Favorite, User } = require("../models");
 
-const { isLoggedIn, isLoggedOut } = require("../utils/auth");
+const { withAuth } = require("../utils/auth");
 
 // const favoriteRoutes = require('./api/favorite-routes');
 
 // //GET ALL FAVORITES
 
-router.get("/", (req, res) => {
+router.get("/", withAuth, (req, res) => {
   res.render("dishboard", { title: "Dishboard" });
 });
 
-router.get("/", isLoggedIn, (req, res) => {
+router.get("/", withAuth, (req, res) => {
   Favorite.findAll({
     where: {
       user_id: req.session.user_id,

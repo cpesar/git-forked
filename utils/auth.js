@@ -1,12 +1,10 @@
 //says user is logged in
-function isLoggedIn(req, res, next) {
-  if (req.isAuthenticated()) return next();
-  res.redirect("/dishboard");
-}
+const withAuth = (req, res, next) => {
+  if (!req.session.user_id) {
+    res.redirect("/login");
+  } else {
+    next();
+  }
+};
 
-function isLoggedOut(req, res, next) {
-  if (!req.isAuthenticated()) return next();
-  res.redirect("/");
-}
-
-module.exports = { isLoggedIn, isLoggedOut };
+module.exports = { withAuth };
