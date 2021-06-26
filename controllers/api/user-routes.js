@@ -66,21 +66,6 @@ router.get("/:id", (req, res) => {
 //USER LOGIN ROUTE
 //localhost:3001/api/user/
 
-// router.post(
-//   "/login",
-//   passport.authenticate(
-//     "local",
-//     {
-//       successRedirect: "/restaurants",
-//       failureRedirect: "/login",
-//       failureFlash: true,
-//     },
-//     (req, res) => {
-//       res.send(200);
-//     }
-//   )
-// );
-
 router.post("/login", (req, res) => {
   User.findOne({
     where: {
