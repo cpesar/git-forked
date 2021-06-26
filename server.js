@@ -3,12 +3,8 @@ const express = require("express");
 const session = require("express-session");
 const exphbs = require("express-handlebars");
 const hbs = exphbs.create({});
-<<<<<<< HEAD
-require("dotenv").config();
-=======
 const passport = require("passport");
 const local = require("./utils/local");
->>>>>>> feature/authentication
 
 const routes = require('./controllers');
 
