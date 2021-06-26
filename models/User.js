@@ -29,6 +29,7 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false
     },
+<<<<<<< HEAD
   //3. EMAIL COLUMN
     // email: {
     //   type: DataTypes.STRING,
@@ -38,6 +39,8 @@ User.init(
     //     isEmail: true
     //   }
     // },
+=======
+>>>>>>> feature/authentication
   //4. PASSWORD COLUMN
     password: {
       type: DataTypes.STRING,

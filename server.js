@@ -3,13 +3,15 @@ const express = require("express");
 const session = require("express-session");
 const exphbs = require("express-handlebars");
 const hbs = exphbs.create({});
+<<<<<<< HEAD
 require("dotenv").config();
+=======
+const passport = require("passport");
+const local = require("./utils/local");
+>>>>>>> feature/authentication
 
 const routes = require('./controllers');
 
-// const passport = require("passport");
-// const localStrategy = require("passport-local").Strategy;
-const bcrypt = require("bcrypt");
 const path = require("path");
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -24,7 +26,7 @@ const sess = {
     db: sequelize,
   }),
   cookie: {
-    maxAge: 300000,
+    maxAge: 30000,
   },
 };
 app.use(session(sess));
@@ -39,6 +41,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static('./views/images'));
 app.use(require("./controllers/"));
+
+// passport initializing
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(routes);
 
