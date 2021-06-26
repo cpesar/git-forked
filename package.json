@@ -30,8 +30,13 @@
     "handlebars": "^4.7.7",
     "mysql2": "^2.2.5",
     "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
     "sequelize": "^6.6.2",
+    "yelp-api": "^1.0.3",
     "yelp-fusion": "^3.0.0"
   },
-  "keywords": []
+  "keywords": [],
+  "devDependencies": {
+    "dotenv-webpack": "^7.0.3"
+  }
 }
