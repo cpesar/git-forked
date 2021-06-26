@@ -19,7 +19,6 @@ router.get("/", withAuth, (req, res) => {
     where: {
       user_id: req.session.user_id,
     },
-<<<<<<< HEAD
     attributes:
     [
       'id', 
@@ -35,10 +34,6 @@ router.get("/", withAuth, (req, res) => {
     const favorites = favoriteData.map(favorite=> favorite.get({plain: true}))
     //HANDLEBARS FILENAME GOES IN THE QUOTES
     res.render('favorite', { title: 'Favorites' }, {favorites, isLoggedIn: true})
-=======
-    attributes: ["id", "cuisine", "price", "rating", "created_at"],
-    include: [{ model: User, attributes: ["username", "email", "password"] }],
->>>>>>> feature/authentication
   })
     .then((favoriteData) => {
       const favorites = favoriteData.map((favorite) =>
@@ -58,12 +53,6 @@ router.get("/", withAuth, (req, res) => {
       res.status(500).json(err);
     });
 });
-<<<<<<< HEAD
 
 
 module.exports = router;
-=======
-// DELETE A FAVORITE
-
-module.exports = router;
->>>>>>> feature/authentication
