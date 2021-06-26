@@ -11,8 +11,8 @@ async function restSearchHandler(event) {
     const price = document.getElementsById('price').val();
     const locale = document.getElementsById('zipcode').val();
 
-    let yelpREST = axios.create({
-        baseURL: "https://api.yelp.com/v3/",
+    let yelpREST = await axios.create({
+        baseURL: "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/",
         headers: {
             Authorization: `Bearer ${API_KEY}`,
             "Content-type": "application/json",
@@ -36,11 +36,11 @@ async function restSearchHandler(event) {
         })
     })
 
-    document
-        .getElementsById('search-btn')
-        .addEventListener('submit', restSearchHandler);
 }
 
+document
+    .getElementsById('search-btn')
+    .addEventListener('submit', restSearchHandler);
 
 
 
