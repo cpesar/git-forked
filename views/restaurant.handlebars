@@ -1,21 +1,22 @@
 <div class="wrapper">
   <div class="row" id="params">
-    <div class="col-3">
-      <label for="cuisine">Choose your desired cuisine:</label>
+    <form action="">
 
-      <select name="cuisine" id="cuisine">
-        <option value="Italian">Italian</option>
-        <option value="American">American</option>
-        <option value="Chinese">Chinese</option>
-        <option value="French">Indian</option>
-        <option value="Japanese">Japanese</option>
-        <option value="Mexican">Mexican</option>
-        <option value="French">French</option>
-      </select>
-    </div>
+      <div class="col-3">
+        <label for="cuisine">Choose your desired cuisine:</label>
+        <select name="cuisine" id="cuisine">
+          <option value="Italian">Italian</option>
+          <option value="American">American</option>
+          <option value="Chinese">Chinese</option>
+          <option value="French">Indian</option>
+          <option value="Japanese">Japanese</option>
+          <option value="Mexican">Mexican</option>
+          <option value="French">French</option>
+        </select>
+      </div>
 
-    <div class="col-3">
-      <label for="rating">Desired minimum rating:</label>
+      <div class="col-3">
+        <label for="rating">Desired minimum rating:</label>
         <select name="rating" id="rating">
           <option value="5">5 Stars</option>
           <option value="4">4 Stars</option>
@@ -23,24 +24,26 @@
           <option value="2">2 Stars</option>
           <option value="1">1 Star</option>
         </select>
-    </div>
+      </div>
 
-    <div class="col-3">
-      <label for="price">Price Range:</label>
+      <div class="col-3">
+        <label for="price">Price Range:</label>
         <select name="price" id="price">
           <option value="4">$$$$</option>
           <option value="3">$$$</option>
           <option value="2">$$</option>
           <option value="1">$</option>
         </select>
-    </div>
+      </div>
 
-    <div class="col-3">
-      <label for="zipcode">Zipcode:</label>
-      <input type="number" id="zipcode">
-    </div>
+      <div class="col-3">
+        <label for="zipcode">Zipcode:</label>
+        <input type="number" id="zipcode">
+      </div>
   </div>
   <div class="row" id="srch-btn">
     <button class="search-btn">I'm Forking Hungry!</button>
+
+    </form>
   </div>
 </div>

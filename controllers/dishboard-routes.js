@@ -11,6 +11,10 @@ const hasAuth = require('../utils/auth');
 
 
 // GET ALL FAVORITES
+router.get("/", (req, res) => {
+  res.render("dishboard", { title: "Dishboard" });
+});
+
 router.get('/', hasAuth, (req,res) => {
   Favorite.findAll({
     where: {
