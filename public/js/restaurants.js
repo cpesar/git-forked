@@ -30,5 +30,5 @@ async function restaurantFormHandler(event) {
 }
 
 document
-  .querySelector(".restaurant-form")
-  .addEventListener("submit", restaurantFormHandler);
+  .querySelector("#fork-btn")
+  .addEventListener("click", restaurantFormHandler);

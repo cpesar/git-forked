@@ -66,7 +66,7 @@ router.get("/:id", (req, res) => {
 //USER LOGIN ROUTE
 //localhost:3001/api/user/
 
-router.post("/login", (req, res) => {
+router.post("/", (req, res) => {
   User.findOne({
     where: {
       username: req.body.username,
