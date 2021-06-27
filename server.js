@@ -1,4 +1,4 @@
-// const yelp = require("yelp-fusion");
+const yelp = require("yelp-fusion");
 const express = require("express");
 const session = require("express-session");
 const exphbs = require("express-handlebars");

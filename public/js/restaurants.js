@@ -8,6 +8,7 @@ async function restaurantFormHandler(event) {
   
   if (zipcode) {
     const response = await fetch("/restaurants/yelp", {
+      
       method: "POST",
       body: JSON.stringify({
         cuisine,
@@ -17,6 +18,7 @@ async function restaurantFormHandler(event) {
       }),
       headers: { "Content-Type": "application/json" },
     });
+    console.log('will this work?');
 
     if (response.ok) {
       console.log(response);
