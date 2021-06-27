@@ -7,15 +7,17 @@ router.get("/", (req, res) => {
   // if(req.session.loggedIn){
   res.render("restaurant", { title: "Restaurants" });
   // }
-  console.log('this is your restaurant page')
 });
 
 router.get("/restaurant", (req, res) => {
   let API_KEY = process.env.DB_API_KEY;
+  console.log(API_KEY, "API KEY:")
   let zipcode = req.body.zipcode;
   let rating = req.body.rating;
   let price = req.body.price;
   let cuisine = req.body.cuisine;
+  
+
     //   var config = {
     //     method: "get",
     //     url: `https://api.yelp.com/v3/businesses/search?term=restaurants&location=${zipcode}&rating=${rating}&price=${price}&categories=${cuisine}&limit=10`,
