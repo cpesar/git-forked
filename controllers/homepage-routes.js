@@ -12,4 +12,16 @@ router.get("/login", (req, res) => {
   res.render("homepage", { title: "Homepage" });
 });
 
+
+// router.get("/restaurants", (req, res) => {
+//   if (req.session.loggedIn) {
+//     res.redirect("/restaurants");
+//     return;
+//   }
+//   res.render("restaurant");
+// });
+
+
+
+
 module.exports = router;

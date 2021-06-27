@@ -28,7 +28,7 @@ router.get("/", withAuth, (req, res) => {
       'created_at'
     ],
     include: [
-      {model: User, attributes: ['username', 'email', 'password']}
+      {model: User, attributes: ['username', 'password']}
     ]
   }).then(favoriteData => {
     const favorites = favoriteData.map(favorite=> favorite.get({plain: true}))

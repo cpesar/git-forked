@@ -10,13 +10,13 @@ router.post("/", (req, res) => {
   // res.json({ message: 'Does this work? '});
   User.create({
     username: req.body.username,
-    email: req.body.email,
+    // email: req.body.email,
     password: req.body.password,
   })
     .then((newUser) => {
       req.session.save(() => {
         (req.session.user_id = newUser.id),
-        (req.session.email = newUser.email),
+        // (req.session.email = newUser.email),
         (req.session.password = newUser.password);
         req.session.loggedIn = true;
 
@@ -71,8 +71,8 @@ router.get("/:id", (req, res) => {
 router.post("/login", (req, res) => {
   User.findOne({
     where: {
-      // username: req.body.username,
-      email: req.body.email,
+      username: req.body.username,
+      // email: req.body.email,
     },
   }).then((newUser) => {
     if (!newUser) {
@@ -87,7 +87,7 @@ router.post("/login", (req, res) => {
     req.session
       .save(() => {
         req.session.user_id = newUser.id;
-        req.session.email = newUser.email;
+        // req.session.email = newUser.email;
         req.session.password = newUser.password;
         req.session.loggedIn = true;
 
