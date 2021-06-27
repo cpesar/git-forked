@@ -5,10 +5,10 @@ async function restaurantFormHandler(event) {
   const rating = document.querySelector("#rating").value;
   const price = document.querySelector("#price").value;
   const zipcode = document.querySelector("#zipcode").value.trim();
-
-  if (cuisine || rating || price || zipcode) {
+  
+  if (zipcode) {
     const response = await fetch("/restaurants/yelp", {
-      method: "post",
+      method: "POST",
       body: JSON.stringify({
         cuisine,
         rating,
@@ -20,9 +20,12 @@ async function restaurantFormHandler(event) {
 
     if (response.ok) {
       console.log(response);
+      document.location.reload();
     } else {
-      alert("Please select all options.");
+      throw new Error(response.status + " failed fetch");
     }
+  } else {
+    alert("Please enter zipcode");
   }
 }
 

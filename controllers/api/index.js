@@ -6,4 +6,5 @@ const favoriteRoutes = require("./favorite-routes");
 router.use("/users", userRoutes);
 router.use("/favorite", favoriteRoutes);
 
+
 module.exports = router;

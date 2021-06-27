@@ -1,7 +1,6 @@
 const axios = require("axios");
 require("dotenv").config();
 const router = require("express").Router();
-const sequelize = require("../config/connection");
 
 router.get("/", (req, res) => {
   // if(req.session.loggedIn){
@@ -25,8 +24,8 @@ router.get("/yelp", (req, res) => {
   };
 
   axios(config)
-    .then(function (response) {
-      res.json(response.data);
+    .then(function (yelpData) {
+      res.json(yelpData.data);
     })
     .catch(function (error) {
       console.log(error);
