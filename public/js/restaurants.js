@@ -1,36 +1,39 @@
 async function restaurantFormHandler(event) {
-  event.preventDefault();
+    event.preventDefault();
 
-  const cuisine = document.querySelector("#cuisine").value;
-  const rating = document.querySelector("#rating").value;
-  const price = document.querySelector("#price").value;
-  const zipcode = document.querySelector("#zipcode").value.trim();
-  
-  if (zipcode) {
-    const response = await fetch("/restaurants/yelp", {
+    const cuisine = document.querySelector("#cuisine").value;
+    const rating = document.querySelector("#rating").value;
+    const price = document.querySelector("#price").value;
+    const zipcode = document.querySelector("#zipcode").value.trim();
+
+    if (cuisine || rating || price || zipcode) {
+        // let response = await fetch("/restaurants", {
+        //     method: "GET",
+        //     headers: { "Content-Type": "application/json" },
+        //     params: {
+        //         cuisine: `${cuisine}`,
+        //         rating: `${rating}`,
+        //         price: `${price}`,
+        //         zipcode: `${zipcode}`
+        //     }
+        // });
+
+        // if (response.ok) {
+        //     console.log(response.params);
+        // } else {
+        //     alert("Please select all options.");
+        // }
+        ; (async () => {
+            const response = await axios({
+              url: `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=restaurants&location=${zipcode}&rating=${rating}&price=${price}&categories=${cuisine}&limit=10`,
+              method: 'get'
+            })
       
-      method: "POST",
-      body: JSON.stringify({
-        cuisine,
-        rating,
-        price,
-        zipcode,
-      }),
-      headers: { "Content-Type": "application/json" },
-    });
-    console.log('will this work?');
-
-    if (response.ok) {
-      console.log(response);
-      document.location.reload();
-    } else {
-      throw new Error(response.status + " failed fetch");
+            console.log(response.body);
+          })()
     }
-  } else {
-    alert("Please enter zipcode");
-  }
 }
 
 document
-  .querySelector(".restaurant-form")
-  .addEventListener("submit", restaurantFormHandler);
+    .querySelector("#restaurant-form")
+    .addEventListener("submit", restaurantFormHandler);
