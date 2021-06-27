@@ -1,7 +1,6 @@
 const axios = require("axios");
 require("dotenv").config();
 const router = require("express").Router();
-const sequelize = require("../config/connection");
 
 router.get("/", (req, res) => {
   // if(req.session.loggedIn){

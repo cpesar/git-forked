@@ -1,7 +1,7 @@
 const axios = require('axios');
 require('dotenv').config();
 
-let API_KEY = process.env.GIT_FORKED_API_KEY_YELP;
+let API_KEY = process.env.DB_API_KEY;
 
 // REST
 let yelpREST = axios.create({
