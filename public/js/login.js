@@ -39,7 +39,11 @@ async function signupFormHandler(event) {
     });
 
     if (response.ok) {
-      document.location.reload;
+      // document.location.reload;
+        //REPLACE DOES NOT ALLOW YOU TO GO BACK!!!!!
+      // document.location.replace("/restaurants");
+      // document.location.href("/restaurants");
+      document.location.assign("/restaurants");
     } else {
       alert(response.statusText);
     }

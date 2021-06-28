@@ -1,14 +1,14 @@
 <div class="wrapper">
+  <form method="POST" action="/controllers/rest-routes.js" id="restaurant-form">
   <div class="row" id="params">
     <div class="col-3">
-      <form class="restaurant-form">
       <label for="cuisine">Choose your desired cuisine:</label>
 
       <select name="cuisine" id="cuisine">
         <option value="Italian">Italian</option>
         <option value="American">American</option>
         <option value="Chinese">Chinese</option>
-        <option value="French">Indian</option>
+        <option value="Indian">Indian</option>
         <option value="Japanese">Japanese</option>
         <option value="Mexican">Mexican</option>
         <option value="French">French</option>
@@ -42,7 +42,9 @@
     </div>
   </div>
   <div class="row" id="srch-btn">
+
     <button class="search-btn" id="fork-btn">I'm Forking Hungry!</button>
+
   </div>
   </form>
 </div>
