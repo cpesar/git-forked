@@ -4,7 +4,7 @@ const { User } = require('../models');
 const homepageRoutes = require('./api/user-routes');
 
 
-router.get("/login", (req, res) => {
+router.get("/", (req, res) => {
   if (req.session.loggedIn) {
     res.redirect("/restaurants");
     return;
