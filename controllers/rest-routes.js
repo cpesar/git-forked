@@ -17,30 +17,32 @@ router.get("/restaurant", (req, res) => {
   let cuisine = req.body.cuisine;
   
 
-    //   var config = {
-    //     method: "get",
-    //     url: `https://api.yelp.com/v3/businesses/search?term=restaurants&location=${zipcode}&rating=${rating}&price=${price}&categories=${cuisine}&limit=10`,
-    //     headers: {
-    //       Authorization: `Bearer ${API_KEY}`,
-    //     },
-    //   };
-
-    //   axios(config)
-    //     .then(function (response) {
-    //       return res.json(response.data);
-    //     })
-    //     .catch(function (error) {
-    //       console.log(error);
-    //     });
-
-    ; (async () => {
-      const response = await axios({
+      var config = {
+        method: "get",
+        // url:`https://randomuser.me/api/?results=50&nat=us`,
         url: `https://api.yelp.com/v3/businesses/search?term=restaurants&location=${zipcode}&rating=${rating}&price=${price}&categories=${cuisine}&limit=10`,
-        method: 'get'
-      })
+        headers: {
+          Authorization: `Bearer ${API_KEY}`,
+        },
+      };
 
-      console.log(response.body);
-    })()
+      axios(config)
+        .then(function (response) {
+          return res.json(response.data);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+
+    // ; (async () => {
+    //   const response = await axios({
+    //     // url:`https://randomuser.me/api/?results=50&nat=us`,
+    //     url: `https://api.yelp.com/v3/businesses/search?term=restaurants&location=${zipcode}&rating=${rating}&price=${price}&categories=${cuisine}&limit=10`,
+    //     method: 'get'
+    //   })
+
+    //   console.log(response.body);
+    // })()
 });
 
 
