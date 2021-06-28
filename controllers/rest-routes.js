@@ -2,7 +2,9 @@ const axios = require("axios");
 require("dotenv").config();
 const router = require("express").Router();
 
-router.get("/", (req, res) => {
+const { withAuth } = require("../utils/auth");
+
+router.get("/", withAuth, (req, res) => {
   // if(req.session.loggedIn){
   res.render("restaurant", {
     title: "Restaurants",
