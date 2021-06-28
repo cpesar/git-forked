@@ -9,7 +9,10 @@ router.get("/", (req, res) => {
     res.redirect("/restaurants");
     return;
   }
-  res.render("homepage", { title: "Homepage" });
+  res.render("homepage", {
+    title: "Homepage",
+    pageTitle: "Git-Forked"
+  });
 });
 
 
