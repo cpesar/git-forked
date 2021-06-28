@@ -6,7 +6,7 @@ const { withAuth } = require("../../utils/auth");
 
 // FIND ALL FAVORITES
 //http://localhost:3001/favorites
-router.get('/', withAuth, (req,res) => {
+router.get('/',(req,res) => {
   console.log('==============');
   Favorite.findAll({
     attributes: [
@@ -42,9 +42,13 @@ router.get('/', withAuth, (req,res) => {
 
 // CREATING A FAVORITE
 // http://localhost:3001/api/favorites
-router.post('/', withAuth, (req,res) => {
+router.post('/',(req,res) => {
   Favorite.create({
-    user_id: req.session.user_id
+    // user_id: req.session.user_id
+    cuisine: req.body.cuisine,
+    price: req.body.price,
+    rating: req.body.rating,
+    user_id: req.session.user_id,
   })
   .then(dbFavoriteData => res.json(dbFavoriteData))
   .catch(err => {
