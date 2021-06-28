@@ -8,14 +8,13 @@ router.get("/", (req, res) => {
   // }
 });
 
-router.get("/restaurant", (req, res) => {
+router.post("/restaurant", (req, res) => {
   let API_KEY = process.env.DB_API_KEY;
   console.log(API_KEY, "API KEY:")
   let zipcode = req.body.zipcode;
   let rating = req.body.rating;
   let price = req.body.price;
   let cuisine = req.body.cuisine;
-  
 
       var config = {
         method: "get",
