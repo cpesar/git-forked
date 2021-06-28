@@ -1,0 +1,38 @@
+#splash {
+  background-image: url('../images/forked.jpg');
+  height: 350px;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: 65%;
+}
+
+#page-title {
+  text-align: center;
+  padding: 150px 0;
+}
+
+#login {
+  margin-left: 2%;
+}
+
+input {
+  margin-bottom: 1%;
+}
+
+#params {
+  margin-top: 1%;
+}
+
+.col-3 {
+  text-align: center;
+}
+
+.search-btn {
+  width: auto;
+  margin: auto;
+}
+
+.intro {
+  text-align: center;
+}

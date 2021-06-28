@@ -1,0 +1,62 @@
+<div class="wrapper">
+  <form method="POST" action="/controllers/rest-routes.js" id="restaurant-form">
+  <div class="row" id="params">
+    <div class="col-3">
+      <label for="cuisine">Choose your desired cuisine:</label>
+
+      <select name="cuisine" id="cuisine">
+        <option value="Italian">Italian</option>
+        <option value="American">American</option>
+        <option value="Chinese">Chinese</option>
+        <option value="Indian">Indian</option>
+        <option value="Japanese">Japanese</option>
+        <option value="Mexican">Mexican</option>
+        <option value="French">French</option>
+      </select>
+    </div>
+
+    <div class="col-3">
+      <label for="rating">Desired minimum rating:</label>
+        <select name="rating" id="rating">
+          <option value="5">5 Stars</option>
+          <option value="4">4 Stars</option>
+          <option value="3">3 Stars</option>
+          <option value="2">2 Stars</option>
+          <option value="1">1 Star</option>
+        </select>
+    </div>
+
+    <div class="col-3">
+      <label for="price">Price Range:</label>
+        <select name="price" id="price">
+          <option value="4">$$$$</option>
+          <option value="3">$$$</option>
+          <option value="2">$$</option>
+          <option value="1">$</option>
+        </select>
+    </div>
+
+    <div class="col-3">
+      <label for="zipcode">Zipcode:</label>
+      <input type="number" id="zipcode">
+    </div>
+  </div>
+  <div class="row" id="srch-btn">
+
+    <button class="search-btn" id="fork-btn">I'm Forking Hungry!</button>
+
+  </div>
+  </form>
+</div>
+{{#each result}}
+<div class="card" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+{{/each}}
+
+<script src="/js/restaurants.js"></script>

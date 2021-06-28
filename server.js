@@ -2,12 +2,12 @@ const yelp = require("yelp-fusion");
 const express = require("express");
 const session = require("express-session");
 const exphbs = require("express-handlebars");
+const hbs = exphbs.create({});
+const passport = require("passport");
+const local = require("./utils/local");
 
 const routes = require('./controllers');
 
-// const passport = require("passport");
-// const localStrategy = require("passport-local").Strategy;
-const bcrypt = require("bcrypt");
 const path = require("path");
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -22,7 +22,7 @@ const sess = {
     db: sequelize,
   }),
   cookie: {
-    maxAge: 300000,
+    maxAge: 30000,
   },
 };
 app.use(session(sess));
@@ -30,18 +30,26 @@ app.use(session(sess));
 
 
 // Middleware
-app.engine("handlebars", exphbs());
+app.engine("handlebars", exphbs({ defaultLayout: 'main' }));
 app.set("view engine", "handlebars");
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static('./views/images'));
 app.use(require("./controllers/"));
 
-app.use(routes);
+app.use(function(req,res, next){
+  res.header('Access-Control-Allow-Origin', "*");
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+})
 
-// sequelize.sync({ force: false }).then(() => {
-//   app.listen(PORT, () => console.log("Now listening"));
-// });
+// passport initializing
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => {console.log(`App listening on port ${PORT}!`);

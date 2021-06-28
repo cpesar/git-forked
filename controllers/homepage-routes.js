@@ -1,20 +1,30 @@
-
-const router = require('express').Router();
-const sequelize = require('../config/connection');
-
+//FRONT END ROUTES- NEED TO COLLAB WITH JIM FOR HANDLEBARS
+const router = require("express").Router();
 const { User } = require('../models');
 const homepageRoutes = require('./api/user-routes');
 
-// router.use()
 
-
-router.get('/login', (req,res)=> {
-  if(req.session.loggedIn){
-    res.redirect('/dishboard');
+router.get("/", (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect("/restaurants");
     return;
   }
-  res.render('login')
+  res.render("homepage", {
+    title: "Homepage",
+    pageTitle: "Git-Forked"
+  });
 });
+
+
+// router.get("/restaurants", (req, res) => {
+//   if (req.session.loggedIn) {
+//     res.redirect("/restaurants");
+//     return;
+//   }
+//   res.render("restaurant");
+// });
+
+
 
 
 module.exports = router;
