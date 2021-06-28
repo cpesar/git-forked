@@ -10,8 +10,11 @@ const favoriteRoutes = require('./api/favorite-routes');
 
 // //GET ALL FAVORITES
 
-router.get("/", withAuth, (req, res) => {
-  res.render("dishboard", { title: "Dishboard" });
+router.get("/",  withAuth, (req, res) => {
+  res.render("dishboard", {
+    title: "Dishboard",
+    pageTitle: "Dishboard"
+  });
 });
 
 router.get("/", withAuth, (req, res) => {

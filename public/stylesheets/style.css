@@ -1,4 +1,4 @@
-.container-fluid {
+#splash {
   background-image: url('../images/forked.jpg');
   height: 350px;
   width: 100%;
@@ -31,4 +31,8 @@ input {
 .search-btn {
   width: auto;
   margin: auto;
+}
+
+.intro {
+  text-align: center;
 }
