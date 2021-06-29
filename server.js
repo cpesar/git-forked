@@ -5,7 +5,7 @@ const exphbs = require("express-handlebars");
 const hbs = exphbs.create({});
 const passport = require("passport");
 const local = require("./utils/local");
-
+const fs = require('fs');
 const routes = require('./controllers');
 
 const path = require("path");
@@ -51,23 +51,25 @@ app.use(passport.session());
 
 app.use(routes);
 
-// const apiKey = process.env.DB_API_KEY;
+const apiKey = process.env.DB_API_KEY;
 
-//   const searchRequest = {
-//     term: 'tacos',
-//     location: 84025,
-//     limit: 5
-//   };
+  const searchRequest = {
+    term: 'tacos',
+    location: 84025,
+    limit: 5
+  };
 
-//   const client = yelp.client(apiKey);
+  const client = yelp.client(apiKey);
 
-// client.search(searchRequest)
-//   .then((response) => {
-//     console.log(response.jsonBody);
-//   })
-//   .catch((error) => {
-//     console.log(error);
-//   });
+client.search(searchRequest)
+  .then((response) => {
+    console.log(response.jsonBody);
+    fs.writeFileSync('yelp.json', JSON.stringify(response), function () {console.log('File Saved!');
+    })
+  })
+  .catch((error) => {
+    console.log(error);
+  });
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => {console.log(`App listening on port ${PORT}!`);
