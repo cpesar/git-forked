@@ -8,7 +8,6 @@ const { withAuth } = require("../../utils/auth");
 
 //http://localhost:3001/favorite
 router.get('/', withAuth, (req,res) => {
-,(req,res) => {
 
   console.log('==============');
   Favorite.findAll({
@@ -48,7 +47,7 @@ router.get('/', withAuth, (req,res) => {
 // http://localhost:3001/api/favorites
 router.post('/',(req,res) => {
   Favorite.create({
-    user_id: req.session.user_id,
+    // user_id: req.session.user_id,
     cuisine: req.body.cuisine,
     price: req.body.price,
     rating: req.body.rating,

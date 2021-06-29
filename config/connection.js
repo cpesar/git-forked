@@ -14,7 +14,7 @@ if(process.env.JAWSDB_URL){
     dialectOptions:{
       decimalNumbers: true,
     },
-    port: 8000,
+    port: 3306,
   });
 }
 
