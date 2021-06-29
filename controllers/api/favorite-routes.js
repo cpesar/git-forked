@@ -5,12 +5,15 @@ const {Favorite, User} = require('../../models/');
 const { withAuth } = require("../../utils/auth");
 
 // FIND ALL FAVORITES
-//http://localhost:3001/favorites
+
+//http://localhost:3001/favorite
 router.get('/', withAuth, (req,res) => {
+,(req,res) => {
+
   console.log('==============');
   Favorite.findAll({
     attributes: [
-      'id', 
+      'id',
       'cuisine', 
       'price', 
       'rating', 
@@ -20,7 +23,7 @@ router.get('/', withAuth, (req,res) => {
     include: [
       {
         model: Favorite,
-        attributes: ['id', 'cuisine', 'price', 'rating', 'created_at'],
+        attributes: ['id', 'cuisine', 'price', 'rating', 'created_at' ],
         include: {
           model: User,
           attributes: [ 'username' ]
@@ -41,10 +44,15 @@ router.get('/', withAuth, (req,res) => {
 });
 
 // CREATING A FAVORITE
+
 // http://localhost:3001/api/favorites
-router.post('/', withAuth, (req,res) => {
+router.post('/',(req,res) => {
   Favorite.create({
-    user_id: req.session.user_id
+    user_id: req.session.user_id,
+    cuisine: req.body.cuisine,
+    price: req.body.price,
+    rating: req.body.rating,
+    user_id: req.session.user_id,
   })
   .then(dbFavoriteData => res.json(dbFavoriteData))
   .catch(err => {
@@ -75,7 +83,7 @@ router.post('/', withAuth, (req,res) => {
 // })
 
 //REMOVE A FAVORITE
-//http://localhost:3001/api/favorites/<id>
+//http://localhost:3001/api/favorite/<id>
 router.delete("/:id", withAuth, (req, res) => {
   Favorite.destroy({
     where: {
