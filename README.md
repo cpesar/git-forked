@@ -41,6 +41,14 @@
   '[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](code_of_conduct.md)'
 
   <br /><a name="contribution">Casey Rose, Shawn Cochran, and Jim Canter.</a>
+
+  [Casey Rose](https://github.com/Geevaveeri)
+  <br />
+  [Shawn Cochran](https://github.com/scochran31)
+  <br />
+  [Jim Canter](https://github.com/Cantalorian)
+
+  
   
 
   ## :hourglass: Tests
