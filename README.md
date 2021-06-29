@@ -21,7 +21,7 @@
   
 
   ## :wrench: Installation
-  <a name="installation">Clone this repo to your local machine. Ensure that the database seeds by running `node seeds/index.js. Once the database is seeded, run `node server.js` in your terminal. </a>
+  <a name="installation">Clone this repo to your local machine. Run `npm install` to ensure that all dependencies are added to your local environment. Ensure that the database seeds by running `node seeds/index.js`. Once the database is seeded, run `node server.js` in your terminal. </a>
   <br />
   
 
