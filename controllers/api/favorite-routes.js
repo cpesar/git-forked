@@ -8,7 +8,6 @@ const { withAuth } = require("../../utils/auth");
 
 //http://localhost:3001/favorite
 router.get('/', withAuth, (req,res) => {
-,(req,res) => {
 
   console.log('==============');
   Favorite.findAll({
