@@ -42,7 +42,7 @@ Favorite.init(
     },
 
     //5. USER-ID COLUMN
-    userId: {
+    user_id: {
       type: DataTypes.INTEGER,
       //references the user model's id
       references:{
