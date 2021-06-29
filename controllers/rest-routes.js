@@ -13,7 +13,7 @@ router.get("/", withAuth, (req, res) => {
   // }
 });
 
-router.post("/restaurant", (req, res) => {
+router.post("/restaurants", (req, res) => {
   let API_KEY = process.env.DB_API_KEY;
   console.log(API_KEY, "API KEY:")
   let zipcode = req.body.zipcode;
