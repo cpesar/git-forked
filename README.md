@@ -44,7 +44,7 @@
   
 
   ## :hourglass: Tests
-  <a name="tests">None at this time</a>
+  <a name="tests">All CRUD route testing was done using Insomnia and MySQL Workbench. Once the backend routes were working successfully, further testing was done directly in the browser.</a>
   
 
   ## :grey_question: Questions
